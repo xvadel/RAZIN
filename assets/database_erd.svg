@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 560" width="100%" height="100%" style="background:#0d1117; font-family:'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="header-scenes" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1f6feb" />
+      <stop offset="100%" stop-color="#388bfd" />
+    </linearGradient>
+    <linearGradient id="header-media" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8957e5" />
+      <stop offset="100%" stop-color="#a371f7" />
+    </linearGradient>
+    <linearGradient id="header-evidence" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#da3633" />
+      <stop offset="100%" stop-color="#f85149" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#58a6ff" />
+    </marker>
+    <marker id="crow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 12 6 L 0 12 M 12 0 L 12 12" fill="none" stroke="#58a6ff" stroke-width="1.5" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="475" y="40" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="700" letter-spacing="1">RAZIN — Relational Database Schema (ERD)</text>
+  <text x="475" y="65" text-anchor="middle" fill="#8b949e" font-size="13">SQLite Persistence Layer for Forensic Evidence Surveying</text>
+
+  <!-- ==================== TABLE: SCENES ==================== -->
+  <g transform="translate(50, 100)" filter="url(#shadow)">
+    <!-- Container -->
+    <rect width="250" height="200" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+    <!-- Header -->
+    <path d="M 0 8 Q 0 0 8 0 L 242 0 Q 250 0 250 8 L 250 40 L 0 40 Z" fill="url(#header-scenes)"/>
+    <text x="15" y="26" fill="#ffffff" font-size="15" font-weight="bold">📁 scenes</text>
+    <text x="235" y="26" text-anchor="end" fill="#e6edf3" font-size="11" opacity="0.8">Table</text>
+    <!-- Columns -->
+    <g transform="translate(15, 65)" font-size="13">
+      <!-- scene_id -->
+      <text x="0" y="0" fill="#e3b341" font-weight="bold">🔑 scene_id</text>
+      <text x="160" y="0" fill="#79c0ff">TEXT [PK]</text>
+      <line x1="-5" y1="12" x2="225" y2="12" stroke="#21262d" stroke-width="1"/>
+
+      <!-- case_reference -->
+      <text x="0" y="32" fill="#c9d1d9">case_reference</text>
+      <text x="160" y="32" fill="#8b949e">TEXT [NULL]</text>
+      <line x1="-5" y1="44" x2="225" y2="44" stroke="#21262d" stroke-width="1"/>
+
+      <!-- created_at -->
+      <text x="0" y="64" fill="#c9d1d9">created_at</text>
+      <text x="160" y="64" fill="#79c0ff">TEXT [REQ]</text>
+      <line x1="-5" y1="76" x2="225" y2="76" stroke="#21262d" stroke-width="1"/>
+    </g>
+  </g>
+
+  <!-- ==================== TABLE: MEDIA ==================== -->
+  <g transform="translate(50, 340)" filter="url(#shadow)">
+    <!-- Container -->
+    <rect width="250" height="190" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+    <!-- Header -->
+    <path d="M 0 8 Q 0 0 8 0 L 242 0 Q 250 0 250 8 L 250 40 L 0 40 Z" fill="url(#header-media)"/>
+    <text x="15" y="26" fill="#ffffff" font-size="15" font-weight="bold">🎞️ media</text>
+    <text x="235" y="26" text-anchor="end" fill="#e6edf3" font-size="11" opacity="0.8">Table</text>
+    <!-- Columns -->
+    <g transform="translate(15, 65)" font-size="13">
+      <!-- media_id -->
+      <text x="0" y="0" fill="#e3b341" font-weight="bold">🔑 media_id</text>
+      <text x="150" y="0" fill="#79c0ff">INT [PK, AI]</text>
+      <line x1="-5" y1="12" x2="225" y2="12" stroke="#21262d" stroke-width="1"/>
+
+      <!-- scene_id -->
+      <text x="0" y="30" fill="#ec775c" font-weight="bold">🔗 scene_id</text>
+      <text x="150" y="30" fill="#d2a8ff">TEXT [FK]</text>
+      <line x1="-5" y1="40" x2="225" y2="40" stroke="#21262d" stroke-width="1"/>
+
+      <!-- file_path -->
+      <text x="0" y="58" fill="#c9d1d9">file_path</text>
+      <text x="150" y="58" fill="#79c0ff">TEXT</text>
+      <line x1="-5" y1="68" x2="225" y2="68" stroke="#21262d" stroke-width="1"/>
+
+      <!-- file_type -->
+      <text x="0" y="86" fill="#c9d1d9">file_type</text>
+      <text x="150" y="86" fill="#8b949e">TEXT (img/vid)</text>
+      <line x1="-5" y1="96" x2="225" y2="96" stroke="#21262d" stroke-width="1"/>
+
+      <!-- analyzed -->
+      <text x="0" y="114" fill="#c9d1d9">analyzed</text>
+      <text x="150" y="114" fill="#7ee787">INT [0/1]</text>
+    </g>
+  </g>
+
+  <!-- ==================== TABLE: EVIDENCE ==================== -->
+  <g transform="translate(560, 90)" filter="url(#shadow)">
+    <!-- Container -->
+    <rect width="340" height="440" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+    <!-- Header -->
+    <path d="M 0 8 Q 0 0 8 0 L 332 0 Q 340 0 340 8 L 340 40 L 0 40 Z" fill="url(#header-evidence)"/>
+    <text x="15" y="26" fill="#ffffff" font-size="15" font-weight="bold">🔬 evidence</text>
+    <text x="325" y="26" text-anchor="end" fill="#e6edf3" font-size="11" opacity="0.8">Table</text>
+    <!-- Columns -->
+    <g transform="translate(15, 65)" font-size="13">
+      <!-- evidence_id -->
+      <text x="0" y="0" fill="#e3b341" font-weight="bold">🔑 evidence_id</text>
+      <text x="210" y="0" fill="#79c0ff">TEXT [UUID, PK]</text>
+      <line x1="-5" y1="10" x2="315" y2="10" stroke="#21262d" stroke-width="1"/>
+
+      <!-- scene_id -->
+      <text x="0" y="28" fill="#ec775c" font-weight="bold">🔗 scene_id</text>
+      <text x="210" y="28" fill="#d2a8ff">TEXT [FK]</text>
+      <line x1="-5" y1="38" x2="315" y2="38" stroke="#21262d" stroke-width="1"/>
+
+      <!-- evidence_class -->
+      <text x="0" y="56" fill="#ff7b72" font-weight="bold">evidence_class</text>
+      <text x="210" y="56" fill="#8b949e">TEXT (enum)</text>
+      <line x1="-5" y1="66" x2="315" y2="66" stroke="#21262d" stroke-width="1"/>
+
+      <!-- confidence -->
+      <text x="0" y="84" fill="#c9d1d9">confidence</text>
+      <text x="210" y="84" fill="#7ee787">REAL [0.0 - 1.0]</text>
+      <line x1="-5" y1="94" x2="315" y2="94" stroke="#21262d" stroke-width="1"/>
+
+      <!-- bbox -->
+      <text x="0" y="112" fill="#c9d1d9">bbox</text>
+      <text x="210" y="112" fill="#79c0ff">TEXT [JSON {x,y}]</text>
+      <line x1="-5" y1="122" x2="315" y2="122" stroke="#21262d" stroke-width="1"/>
+
+      <!-- source_image -->
+      <text x="0" y="140" fill="#c9d1d9">source_image</text>
+      <text x="210" y="140" fill="#8b949e">TEXT [Path]</text>
+      <line x1="-5" y1="150" x2="315" y2="150" stroke="#21262d" stroke-width="1"/>
+
+      <!-- crop_image -->
+      <text x="0" y="168" fill="#c9d1d9">crop_image</text>
+      <text x="210" y="168" fill="#8b949e">TEXT [Path, NULL]</text>
+      <line x1="-5" y1="178" x2="315" y2="178" stroke="#21262d" stroke-width="1"/>
+
+      <!-- scene_area_label -->
+      <text x="0" y="196" fill="#c9d1d9">scene_area_label</text>
+      <text x="210" y="196" fill="#8b949e">TEXT [NULL]</text>
+      <line x1="-5" y1="206" x2="315" y2="206" stroke="#21262d" stroke-width="1"/>
+
+      <!-- timestamp -->
+      <text x="0" y="224" fill="#c9d1d9">timestamp</text>
+      <text x="210" y="224" fill="#79c0ff">TEXT [ISO8601]</text>
+      <line x1="-5" y1="234" x2="315" y2="234" stroke="#21262d" stroke-width="1"/>
+
+      <!-- requires_review -->
+      <text x="0" y="252" fill="#e3b341" font-weight="bold">requires_review</text>
+      <text x="210" y="252" fill="#e3b341">INT [0/1 Flag]</text>
+      <line x1="-5" y1="262" x2="315" y2="262" stroke="#21262d" stroke-width="1"/>
+
+      <!-- reviewed -->
+      <text x="0" y="280" fill="#7ee787" font-weight="bold">reviewed</text>
+      <text x="210" y="280" fill="#7ee787">INT [0/1 Status]</text>
+      <line x1="-5" y1="290" x2="315" y2="290" stroke="#21262d" stroke-width="1"/>
+
+      <!-- notes -->
+      <text x="0" y="308" fill="#c9d1d9">notes</text>
+      <text x="210" y="308" fill="#8b949e">TEXT [AI/Human]</text>
+    </g>
+  </g>
+
+  <!-- ==================== RELATIONSHIPS ==================== -->
+  <!-- scenes (1) -> media (N) -->
+  <path d="M 175 300 L 175 340" fill="none" stroke="#58a6ff" stroke-width="2" stroke-dasharray="4 2" marker-end="url(#crow)"/>
+  <rect x="185" y="310" width="80" height="20" rx="4" fill="#21262d" stroke="#30363d"/>
+  <text x="225" y="324" text-anchor="middle" fill="#58a6ff" font-size="10" font-weight="bold">1 : N media</text>
+
+  <!-- scenes (1) -> evidence (N) -->
+  <path d="M 300 165 L 430 165 L 430 220 L 560 220" fill="none" stroke="#58a6ff" stroke-width="2" marker-end="url(#crow)"/>
+  <rect x="375" y="180" width="105" height="22" rx="4" fill="#21262d" stroke="#30363d"/>
+  <text x="427" y="195" text-anchor="middle" fill="#58a6ff" font-size="10" font-weight="bold">1 : N evidence</text>
+</svg>

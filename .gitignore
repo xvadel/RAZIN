@@ -1,0 +1,43 @@
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
+
+# Runtime & database data
+data/
+*.db
+*.sqlite
+*.sqlite3
+
+# ML Model weights (large binaries)
+models/*.pt
+models/*.onnx
+
+# Python virtual environments
+.venv/
+venv/
+env/
+data/venv/
+
+# Python cache & build
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Frontend dependencies & build output
+frontend/node_modules/
+frontend/.vite/
+frontend/dist/
+frontend/package-lock.json
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

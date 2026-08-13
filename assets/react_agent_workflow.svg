@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 720" width="100%" height="100%" style="background:#0d1117; font-family:'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="grad-input" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f6feb" />
+      <stop offset="100%" stop-color="#093984" />
+    </linearGradient>
+    <linearGradient id="grad-agent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8957e5" />
+      <stop offset="100%" stop-color="#4c2889" />
+    </linearGradient>
+    <linearGradient id="grad-tools" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#da3633" />
+      <stop offset="100%" stop-color="#7e1917" />
+    </linearGradient>
+    <linearGradient id="grad-pass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#238636" />
+      <stop offset="100%" stop-color="#114e1e" />
+    </linearGradient>
+    <linearGradient id="grad-review" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d29922" />
+      <stop offset="100%" stop-color="#7a5405" />
+    </linearGradient>
+    
+    <!-- Filter -->
+    <filter id="card-shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+    
+    <!-- Markers -->
+    <marker id="m-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#58a6ff" />
+    </marker>
+    <marker id="m-purple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#bc8cff" />
+    </marker>
+    <marker id="m-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#3fb950" />
+    </marker>
+    <marker id="m-yellow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#e3b341" />
+    </marker>
+  </defs>
+
+  <!-- Canvas Header -->
+  <text x="540" y="38" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="700" letter-spacing="1">RAZIN — ReAct Agent Architecture &amp; Triage Workflow</text>
+  <text x="540" y="62" text-anchor="middle" fill="#8b949e" font-size="13">Autonomous Reasoning, Tool Calling, and Human-in-the-Loop Forensic Triage</text>
+
+  <!-- ==================== 1. INPUT STAGE ==================== -->
+  <g transform="translate(40, 100)" filter="url(#card-shadow)">
+    <rect width="210" height="230" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+    <rect width="210" height="36" rx="8" fill="url(#grad-input)"/>
+    <text x="15" y="24" fill="#ffffff" font-size="14" font-weight="bold">📥 Ingestion &amp; CV</text>
+
+    <g transform="translate(15, 55)" font-size="12" fill="#c9d1d9">
+      <text x="0" y="15" fill="#79c0ff" font-weight="bold">Scene Media (Img / Vid)</text>
+      <text x="0" y="35">↓ Video Frame Extraction</text>
+      <text x="0" y="55">↓ Near-Duplicate Filter</text>
+      <line x1="-5" y1="65" x2="185" y2="65" stroke="#30363d"/>
+      <text x="0" y="85" fill="#e3b341" font-weight="bold">YOLO Detector Output:</text>
+      <text x="0" y="105">• Evidence Class (Enum)</text>
+      <text x="0" y="125">• Confidence Score (float)</text>
+      <text x="0" y="145">• Bounding Box [x, y, w, h]</text>
+      <text x="0" y="165">• Forensic Crop Thumbnail</text>
+    </g>
+  </g>
+
+  <!-- Arrow Input -> ReAct -->
+  <path d="M 250 215 L 320 215" fill="none" stroke="#58a6ff" stroke-width="2" marker-end="url(#m-blue)"/>
+  <text x="285" y="205" text-anchor="middle" fill="#58a6ff" font-size="10" font-weight="bold">Candidate</text>
+
+  <!-- ==================== 2. ReAct AGENT CORE LOOP ==================== -->
+  <g transform="translate(320, 90)" filter="url(#card-shadow)">
+    <rect width="440" height="390" rx="8" fill="#161b22" stroke="#8957e5" stroke-width="2"/>
+    <rect width="440" height="38" rx="8" fill="url(#grad-agent)"/>
+    <text x="15" y="25" fill="#ffffff" font-size="15" font-weight="bold">🧠 ReAct Agent (Gemini 2.0 / Groq / Fallback)</text>
+
+    <!-- Sub-boxes for THOUGHT, ACTION, OBSERVATION -->
+    <!-- THOUGHT -->
+    <g transform="translate(20, 55)">
+      <rect width="400" height="85" rx="6" fill="#0d1117" stroke="#388bfd" stroke-width="1.2"/>
+      <text x="12" y="20" fill="#79c0ff" font-size="13" font-weight="bold">💭 1. THOUGHT (Forensic Reasoning)</text>
+      <text x="12" y="40" fill="#c9d1d9" font-size="11">• Evaluate confidence against threshold (0.50)</text>
+      <text x="12" y="58" fill="#c9d1d9" font-size="11">• Calculate IoU overlap against sibling detections (&gt;0.30)</text>
+      <text x="12" y="75" fill="#c9d1d9" font-size="11">• Prompt LLM for context-sensitive forensic recommendations</text>
+    </g>
+
+    <!-- Loop arrow Thought -> Action -->
+    <path d="M 220 140 L 220 160" fill="none" stroke="#bc8cff" stroke-width="2" marker-end="url(#m-purple)"/>
+
+    <!-- ACTION (TOOLS) -->
+    <g transform="translate(20, 160)">
+      <rect width="400" height="110" rx="6" fill="#0d1117" stroke="#da3633" stroke-width="1.2"/>
+      <text x="12" y="20" fill="#f85149" font-size="13" font-weight="bold">🛠️ 2. ACTION (Forensic Tool Execution)</text>
+      <g transform="translate(15, 38)" font-size="11" fill="#c9d1d9">
+        <text x="0" y="0" fill="#ff7b72" font-family="monospace">log_evidence_tool(item)</text>
+        <text x="210" y="0" fill="#8b949e">→ Persist valid item</text>
+        <text x="0" y="22" fill="#ff7b72" font-family="monospace">flag_for_review_tool(id, reason)</text>
+        <text x="210" y="22" fill="#8b949e">→ Mark requires_review</text>
+        <text x="0" y="44" fill="#ff7b72" font-family="monospace">summarize_scene_tool(scene_id)</text>
+        <text x="210" y="44" fill="#8b949e">→ Draft preliminary digest</text>
+      </g>
+    </g>
+
+    <!-- Loop arrow Action -> Observation -->
+    <path d="M 220 270 L 220 290" fill="none" stroke="#bc8cff" stroke-width="2" marker-end="url(#m-purple)"/>
+
+    <!-- OBSERVATION -->
+    <g transform="translate(20, 290)">
+      <rect width="400" height="75" rx="6" fill="#0d1117" stroke="#7ee787" stroke-width="1.2"/>
+      <text x="12" y="20" fill="#7ee787" font-size="13" font-weight="bold">👁️ 3. OBSERVATION (Environment Feedback)</text>
+      <text x="12" y="42" fill="#c9d1d9" font-size="11">• Evidence record committed to SQLite with unique UUID</text>
+      <text x="12" y="60" fill="#c9d1d9" font-size="11">• Status updated: Auto-Approved vs. Review Queue</text>
+    </g>
+  </g>
+
+  <!-- ==================== 3. TRIAGE DECISION BRANCH ==================== -->
+  <g transform="translate(820, 100)" filter="url(#card-shadow)">
+    <!-- Branch A: Auto Approved -->
+    <g transform="translate(0, 0)">
+      <rect width="220" height="150" rx="8" fill="#161b22" stroke="#238636" stroke-width="1.5"/>
+      <rect width="220" height="34" rx="8" fill="url(#grad-pass)"/>
+      <text x="12" y="22" fill="#ffffff" font-size="13" font-weight="bold">✅ Auto-Log Evidence</text>
+      <g transform="translate(12, 50)" font-size="11" fill="#c9d1d9">
+        <text x="0" y="10" fill="#7ee787" font-weight="bold">• Conf &gt;= 0.50</text>
+        <text x="0" y="28" fill="#7ee787" font-weight="bold">• No Ambiguous Overlaps</text>
+        <text x="0" y="48">• Status: "AI Unverified"</text>
+        <text x="0" y="66">• requires_review = 0</text>
+        <text x="0" y="84" fill="#8b949e">Direct to Evidence Map</text>
+      </g>
+    </g>
+
+    <!-- Branch B: Flagged For Review -->
+    <g transform="translate(0, 180)">
+      <rect width="220" height="170" rx="8" fill="#161b22" stroke="#d29922" stroke-width="1.5"/>
+      <rect width="220" height="34" rx="8" fill="url(#grad-review)"/>
+      <text x="12" y="22" fill="#ffffff" font-size="13" font-weight="bold">⚠️ Flagged For Review</text>
+      <g transform="translate(12, 50)" font-size="11" fill="#c9d1d9">
+        <text x="0" y="10" fill="#e3b341" font-weight="bold">• Conf &lt; 0.50 (Low Score)</text>
+        <text x="0" y="28" fill="#e3b341" font-weight="bold">• Class Overlap (IoU &gt; 0.3)</text>
+        <text x="0" y="48">• requires_review = 1</text>
+        <text x="0" y="68" fill="#d29922">Reason logged to notes</text>
+        <text x="0" y="88" fill="#79c0ff">Sent to Human Review Queue</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Connectors Agent -> Branches -->
+  <path d="M 760 210 L 790 210 L 790 170 L 820 170" fill="none" stroke="#3fb950" stroke-width="2" marker-end="url(#m-green)"/>
+  <path d="M 760 310 L 790 310 L 790 350 L 820 350" fill="none" stroke="#e3b341" stroke-width="2" marker-end="url(#m-yellow)"/>
+
+  <!-- ==================== 4. HUMAN-IN-THE-LOOP INVESTIGATOR WORKFLOW ==================== -->
+  <g transform="translate(40, 520)" filter="url(#card-shadow)">
+    <rect width="1000" height="160" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+    <text x="25" y="32" fill="#f0f6fc" font-size="15" font-weight="bold">👤 Investigator Human-in-the-Loop Verification &amp; Reporting (Streamlit UI)</text>
+
+    <g transform="translate(25, 55)">
+      <!-- Step 1: Catalog -->
+      <rect x="0" y="0" width="290" height="85" rx="6" fill="#0d1117" stroke="#30363d"/>
+      <text x="15" y="22" fill="#58a6ff" font-size="13" font-weight="bold">1. Evidence Catalog</text>
+      <text x="15" y="45" fill="#8b949e" font-size="11">Inspect cropped thumbnails, confidence,</text>
+      <text x="15" y="62" fill="#8b949e" font-size="11">timestamps, and filter by evidence class.</text>
+
+      <!-- Step 2: Triage Queue -->
+      <rect x="330" y="0" width="310" height="85" rx="6" fill="#0d1117" stroke="#d29922"/>
+      <text x="15" y="22" transform="translate(330, 0)" fill="#e3b341" font-size="13" font-weight="bold">2. Review Queue Triage</text>
+      <text x="15" y="45" transform="translate(330, 0)" fill="#c9d1d9" font-size="11">1-click confirm candidate evidence or</text>
+      <text x="15" y="62" transform="translate(330, 0)" fill="#c9d1d9" font-size="11">attach investigator notes (`PATCH /review`).</text>
+
+      <!-- Step 3: Reporting -->
+      <rect x="680" y="0" width="270" height="85" rx="6" fill="#0d1117" stroke="#238636"/>
+      <text x="15" y="22" transform="translate(680, 0)" fill="#7ee787" font-size="13" font-weight="bold">3. Case Report Export</text>
+      <text x="15" y="45" transform="translate(680, 0)" fill="#8b949e" font-size="11">Generate LLM preliminary summary,</text>
+      <text x="15" y="62" transform="translate(680, 0)" fill="#8b949e" font-size="11">inventory counts, and download .md digest.</text>
+    </g>
+  </g>
+</svg>

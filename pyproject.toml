@@ -1,0 +1,24 @@
+[project]
+name = "razin"
+version = "0.1.0"
+description = "AI-assisted crime-scene evidence surveying system"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "pydantic>=2",
+    "langgraph",
+    "langchain-google-genai",
+    "langchain-groq",
+    "langchain-core",
+    "ultralytics",
+    "opencv-python-headless",
+    "streamlit",
+    "httpx",
+    "python-multipart",
+    "python-dotenv",
+    "pillow",
+    "chromadb",
+    "transformers",
+]

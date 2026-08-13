@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" width="100%" height="100%" style="background:#0d1117; font-family:'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <filter id="box-shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#58a6ff" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="500" y="35" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="700" letter-spacing="1">RAZIN — System Architecture &amp; RAG Pipeline</text>
+  <text x="500" y="58" text-anchor="middle" fill="#8b949e" font-size="13">End-to-End Multimodal Forensic Pipeline with ChromaDB &amp; CLIP Embeddings</text>
+
+  <!-- Node 1: Ingestion -->
+  <g transform="translate(30, 95)" filter="url(#box-shadow)">
+    <rect width="140" height="110" rx="8" fill="#161b22" stroke="#388bfd" stroke-width="1.5"/>
+    <text x="70" y="32" text-anchor="middle" fill="#79c0ff" font-size="13" font-weight="bold">📸 Ingestion</text>
+    <text x="70" y="56" text-anchor="middle" fill="#c9d1d9" font-size="11">Scene Imagery</text>
+    <text x="70" y="74" text-anchor="middle" fill="#c9d1d9" font-size="11">Survey Video</text>
+    <text x="70" y="92" text-anchor="middle" fill="#8b949e" font-size="10">FastAPI Upload</text>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <path d="M 170 150 L 205 150" fill="none" stroke="#58a6ff" stroke-width="2" marker-end="url(#arrow-blue)"/>
+
+  <!-- Node 2: Video & Frame Preprocessing -->
+  <g transform="translate(205, 95)" filter="url(#box-shadow)">
+    <rect width="145" height="110" rx="8" fill="#161b22" stroke="#8957e5" stroke-width="1.5"/>
+    <text x="72" y="32" text-anchor="middle" fill="#d2a8ff" font-size="13" font-weight="bold">🎞️ OpenCV CV</text>
+    <text x="72" y="56" text-anchor="middle" fill="#c9d1d9" font-size="11">FPS Frame Sampling</text>
+    <text x="72" y="74" text-anchor="middle" fill="#c9d1d9" font-size="11">Duplicate Filter</text>
+    <text x="72" y="92" text-anchor="middle" fill="#8b949e" font-size="10">Normalization</text>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <path d="M 350 150 L 385 150" fill="none" stroke="#58a6ff" stroke-width="2" marker-end="url(#arrow-blue)"/>
+
+  <!-- Node 3: YOLO Detector -->
+  <g transform="translate(385, 95)" filter="url(#box-shadow)">
+    <rect width="145" height="110" rx="8" fill="#161b22" stroke="#da3633" stroke-width="1.5"/>
+    <text x="72" y="32" text-anchor="middle" fill="#ff7b72" font-size="13" font-weight="bold">🎯 YOLO Detector</text>
+    <text x="72" y="56" text-anchor="middle" fill="#c9d1d9" font-size="11">Ultralytics YOLO</text>
+    <text x="72" y="74" text-anchor="middle" fill="#c9d1d9" font-size="11">Bloodstain / Footprint</text>
+    <text x="72" y="92" text-anchor="middle" fill="#8b949e" font-size="10">Digital Devices</text>
+  </g>
+
+  <!-- Arrow 3 -> 4 -->
+  <path d="M 530 150 L 565 150" fill="none" stroke="#58a6ff" stroke-width="2" marker-end="url(#arrow-blue)"/>
+
+  <!-- Node 4: ReAct Agent -->
+  <g transform="translate(565, 95)" filter="url(#box-shadow)">
+    <rect width="145" height="110" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.5"/>
+    <text x="72" y="32" text-anchor="middle" fill="#e3b341" font-size="13" font-weight="bold">🧠 ReAct Agent</text>
+    <text x="72" y="56" text-anchor="middle" fill="#c9d1d9" font-size="11">Gemini 2.0 / Groq</text>
+    <text x="72" y="74" text-anchor="middle" fill="#c9d1d9" font-size="11">IoU &amp; Threshold Triage</text>
+    <text x="72" y="92" text-anchor="middle" fill="#8b949e" font-size="10">Forensic Reasoning</text>
+  </g>
+
+  <!-- Arrow 4 -> Dual Storage (SQLite & ChromaDB) -->
+  <path d="M 710 135 L 750 135" fill="none" stroke="#58a6ff" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <path d="M 710 165 L 750 165" fill="none" stroke="#58a6ff" stroke-width="2" marker-end="url(#arrow-blue)"/>
+
+  <!-- Node 5: SQLite Database -->
+  <g transform="translate(750, 85)" filter="url(#box-shadow)">
+    <rect width="210" height="55" rx="6" fill="#161b22" stroke="#238636" stroke-width="1.5"/>
+    <text x="105" y="24" text-anchor="middle" fill="#7ee787" font-size="12" font-weight="bold">💾 SQLite (Metadata)</text>
+    <text x="105" y="44" text-anchor="middle" fill="#8b949e" font-size="10">scenes | media | evidence</text>
+  </g>
+
+  <!-- Node 6: ChromaDB + CLIP -->
+  <g transform="translate(750, 150)" filter="url(#box-shadow)">
+    <rect width="210" height="55" rx="6" fill="#161b22" stroke="#a371f7" stroke-width="1.5"/>
+    <text x="105" y="24" text-anchor="middle" fill="#d2a8ff" font-size="12" font-weight="bold">🧬 ChromaDB (Vector Store)</text>
+    <text x="105" y="44" text-anchor="middle" fill="#8b949e" font-size="10">text-embedding-004 + CLIP visual</text>
+  </g>
+
+  <!-- Bottom React Frontend Dashboard -->
+  <path d="M 855 205 L 855 270 L 520 270" fill="none" stroke="#58a6ff" stroke-width="2" marker-end="url(#arrow-blue)"/>
+
+  <g transform="translate(60, 260)" filter="url(#box-shadow)">
+    <rect width="880" height="230" rx="8" fill="#161b22" stroke="#388bfd" stroke-width="1.5"/>
+    <text x="440" y="32" text-anchor="middle" fill="#79c0ff" font-size="15" font-weight="bold">⚛️ React + Vite + Tailwind CSS Web Application (Port 5173)</text>
+
+    <g transform="translate(25, 50)">
+      <!-- Tab 1 -->
+      <rect x="0" y="0" width="155" height="150" rx="6" fill="#0d1117" stroke="#30363d"/>
+      <text x="77" y="25" text-anchor="middle" fill="#c9d1d9" font-size="11" font-weight="bold">1. Ingestion Zone</text>
+      <text x="77" y="50" text-anchor="middle" fill="#8b949e" font-size="10">Drag &amp; drop uploads</text>
+      <text x="77" y="70" text-anchor="middle" fill="#8b949e" font-size="10">Multi-file batching</text>
+      <text x="77" y="90" text-anchor="middle" fill="#8b949e" font-size="10">AI detection trigger</text>
+
+      <!-- Tab 2 -->
+      <rect x="170" y="0" width="155" height="150" rx="6" fill="#0d1117" stroke="#30363d"/>
+      <text x="247" y="25" text-anchor="middle" fill="#c9d1d9" font-size="11" font-weight="bold">2. Evidence Catalog</text>
+      <text x="247" y="50" text-anchor="middle" fill="#8b949e" font-size="10">Forensic crop previews</text>
+      <text x="247" y="70" text-anchor="middle" fill="#8b949e" font-size="10">Confidence gauges</text>
+      <text x="247" y="90" text-anchor="middle" fill="#8b949e" font-size="10">Modal zoom &amp; filter</text>
+
+      <!-- Tab 3 -->
+      <rect x="340" y="0" width="155" height="150" rx="6" fill="#0d1117" stroke="#e3b341"/>
+      <text x="417" y="25" text-anchor="middle" fill="#e3b341" font-size="11" font-weight="bold">3. Review Queue</text>
+      <text x="417" y="50" text-anchor="middle" fill="#c9d1d9" font-size="10">Human-in-the-loop</text>
+      <text x="417" y="70" text-anchor="middle" fill="#c9d1d9" font-size="10">Uncertainty flags</text>
+      <text x="417" y="90" text-anchor="middle" fill="#c9d1d9" font-size="10">1-click verification</text>
+
+      <!-- Tab 4: Chatbot -->
+      <rect x="510" y="0" width="155" height="150" rx="6" fill="#0d1117" stroke="#a371f7"/>
+      <text x="587" y="25" text-anchor="middle" fill="#d2a8ff" font-size="11" font-weight="bold">4. AI Forensic Chat</text>
+      <text x="587" y="50" text-anchor="middle" fill="#c9d1d9" font-size="10">RAG conversational Q&amp;A</text>
+      <text x="587" y="70" text-anchor="middle" fill="#c9d1d9" font-size="10">Scene / All scope</text>
+      <text x="587" y="90" text-anchor="middle" fill="#c9d1d9" font-size="10">Source evidence tags</text>
+
+      <!-- Tab 5 -->
+      <rect x="680" y="0" width="150" height="150" rx="6" fill="#0d1117" stroke="#238636"/>
+      <text x="755" y="25" text-anchor="middle" fill="#7ee787" font-size="11" font-weight="bold">5. Case Report</text>
+      <text x="755" y="50" text-anchor="middle" fill="#8b949e" font-size="10">AI digest synthesis</text>
+      <text x="755" y="70" text-anchor="middle" fill="#8b949e" font-size="10">Evidence statistics</text>
+      <text x="755" y="90" text-anchor="middle" fill="#8b949e" font-size="10">Markdown export</text>
+    </g>
+  </g>
+</svg>
